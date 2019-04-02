@@ -1,0 +1,7 @@
+.text-primary{
+    color: $primaryColor;
+
+    &:darker {
+        color: $primaryDarkenColor;
+    }
+}

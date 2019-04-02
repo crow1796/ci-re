@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="49px" height="49px" viewBox="0 0 49 49" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>Iconos Círculo</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="[Móvil]-Popup-crear-nuevo" transform="translate(-199.000000, -230.000000)">
+            <g id="Botón-Crear-Nuevo-Activo-Secundario" transform="translate(199.000000, 230.000000)">
+                <g id="Iconos-Círculo">
+                    <circle id="Oval" fill="#6E9ADB" cx="24.5" cy="24.5" r="24.5"></circle>
+                    <g id="cross" transform="translate(8.166667, 21.233333)" fill="#6E9ADB" stroke="#C7D0DF" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3.26666667,1.02687214 L3.26666667,8.16666667" id="Shape"></path>
+                        <path d="M0,4.59676941 L6.53333333,4.59676941" id="Shape"></path>
+                    </g>
+                    <g id="external-link" transform="translate(19.600000, 16.333333)" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M15.2025641,9.85863248 L15.2025641,15.9396581 C15.2025641,17.059144 14.2950415,17.9666667 13.1755556,17.9666667 L2.02700855,17.9666667 C0.907522639,17.9666667 0,17.059144 0,15.9396581 L0,4.79111111 C0,3.6716252 0.907522639,2.76410256 2.02700855,2.76410256 L8.10803419,2.76410256" id="Shape"></path>
+                        <polyline id="Shape" points="12.4384615 0 17.9666667 0 17.9666667 5.52820513"></polyline>
+                        <path d="M6.91025641,11.0564103 L17.9666667,0" id="Shape"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
