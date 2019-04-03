@@ -14,7 +14,9 @@
 <template>
     <div id="list" class="bg-grey-lightest">
         <main-appbar/>
-        <router-view/>
+        <transition name="fade" mode="out-in">
+            <router-view/>
+        </transition>
         <div class="tabs" v-if="$route.name == 'sites' || $route.name == 'notes'">
             <ul class="list-reset flex">
                 <li class="flex-1">

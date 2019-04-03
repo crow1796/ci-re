@@ -24,10 +24,22 @@
 <template>
     <div id="create-site-form">
         <form class="px-6 py-6">
-            <ci-input name="title" :label="$t('title_label')" :placeholder="$t('title_label')"/>
-            <ci-input name="url" type="url" :label="$t('url_label')" :placeholder="$t('url_label')"/>
-            <ci-input name="url" :label="$t('username_label')" :placeholder="$t('username_label')"/>
-            <ci-input name="password" type="password" :label="$t('password_label')" :placeholder="$t('password_label')"/>
+            <ci-input name="title" 
+                :label="$t('title_label')" 
+                :placeholder="$t('title_label')"
+                v-model="title"/>
+            <ci-input name="url" 
+                type="url" 
+                :label="$t('url_label')" 
+                :placeholder="$t('url_label')"
+                v-model="url"/>
+            <ci-input name="username" 
+                :label="$t('username_label')" 
+                :placeholder="$t('username_label')"/>
+            <ci-input name="password" 
+                type="password" 
+                :label="$t('password_label')" 
+                :placeholder="$t('password_label')"/>
             <div class="text-right">
                 <ci-button :text="$t('cancel_btn')" 
                 class="mr-4"
@@ -41,6 +53,21 @@
 
 <script>
 export default {
-    
+    created(){
+        if(this.$route.query.mode == 'current_site'){
+            chrome.tabs.query({
+                active: true
+            }, (tabs) => {
+                this.title = tabs[0].title
+                this.url = tabs[0].url
+            })
+        }
+    },
+    data(){
+        return {
+            title: null,
+            url: null
+        }
+    }
 }
 </script>

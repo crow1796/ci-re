@@ -17,11 +17,24 @@
       "background.js"
     ]
   },
+  "content_scripts": [
+    {
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "js": ["content_script/content_script.js"],
+      "run_at": "document_end"
+    }
+  ],
   "options_ui": {
     "page": "options/options.html",
     "chrome_style": true
   },
   "web_accessible_resources": [
     "images/*png"
+  ],
+  "permissions": [
+    "tabs"
   ]
 }

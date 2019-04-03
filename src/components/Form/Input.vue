@@ -7,7 +7,8 @@
         :id="name" 
         :type="type" 
         :placeholder="placeholder"
-        :autocomplete="autocomplete">
+        :autocomplete="autocomplete"
+        v-model="model">
     </div>
 </template>
 
@@ -24,7 +25,7 @@ export default {
             default: ''
         },
         value: {
-            default: null
+            required: false
         },
         type: {
             default: 'text'
@@ -34,6 +35,11 @@ export default {
         },
         autocomplete: {
             default: 'off'
+        }
+    },
+    data(){
+        return {
+            model: this.value
         }
     }
 }
