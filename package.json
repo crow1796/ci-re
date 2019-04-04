@@ -15,6 +15,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "lodash": "^4.17.11",
+    "node-forge": "^0.8.2",
     "vue": "^2.5.17",
     "vue-i18n": "^8.10.0",
     "vue-router": "^3.0.1",

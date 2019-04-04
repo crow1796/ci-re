@@ -21,5 +21,6 @@ module.exports = {
     ],
     testMatch: [
         '**/__tests__/**/*.spec.(js|jsx|ts|tsx)|**/__tests__/*.(js|jsx|ts|tsx)'
-    ]
+    ],
+    setupFiles: ['./setup-jest.js']
 }
