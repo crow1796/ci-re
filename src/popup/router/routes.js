@@ -1,6 +1,7 @@
 import PageIndex from './pages/Index'
 import PageSites from './pages/Index/Sites'
 import PageCreateSiteForm from './pages/Index/Sites/CreateSiteForm.vue'
+import PageCreateNoteForm from './pages/Index/Sites/CreateNoteForm.vue'
 
 import PageNotes from './pages/Index/Notes'
 
@@ -33,6 +34,13 @@ export default [{
                 path: 'notes',
                 component: PageNotes,
                 name: 'notes',
+                meta: {
+                    requireAuth: true
+                }
+            }, {
+                path: 'notes/create',
+                component: PageCreateNoteForm,
+                name: 'create_note',
                 meta: {
                     requireAuth: true
                 }

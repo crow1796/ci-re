@@ -2,18 +2,12 @@
 {
     "en-US": {
         "title_label": "Title",
-        "url_label": "URL",
-        "username_label": "Username",
-        "password_label": "Password",
         "notes_label": "Notes",
         "save_btn": "Save",
         "cancel_btn": "Cancel"
     },
     "es-ES": {
         "title_label": "Titulo",
-        "url_label": "URL",
-        "username_label": "Usuario",
-        "password_label": "Contraseña",
         "notes_label": "Notas",
         "save_btn": "Salvar",
         "cancel_btn": "Cancelar"
@@ -29,26 +23,6 @@
                 :label="$t('title_label')" 
                 :placeholder="$t('title_label')"
                 :value="title"/>
-            <ci-input name="url" 
-                type="url" 
-                :label="$t('url_label')" 
-                :placeholder="$t('url_label')"
-                v-model="url"/>
-            <ci-input name="username" 
-                :label="$t('username_label')" 
-                :placeholder="$t('username_label')"
-                v-model="username"/>
-            <label class="block text-grey-darker text-sm font-bold mb-2" for="password">
-                {{ $t('password_label') }}
-            </label>
-            <password id="password"
-                name="password"
-                v-model="password"
-                :badge="false"
-                :toggle="true"
-                default-class="appearance-none border w-full py-4 px-3 text-grey-darker leading-tight outline-none focus:border-grey text-md"
-                :placeholder="$t('password_label')"
-            />
             <ci-textarea name="notes" 
                 :label="$t('notes_label')" 
                 :placeholder="$t('notes_label')"/>

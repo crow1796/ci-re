@@ -1,3 +1,5 @@
+import Authenticator from '@app/popup/utils/auth'
+
 const state = {
     user: localStorage.getItem('jwt-auth-user') ? JSON.parse(localStorage.getItem('jwt-auth-user')) : null,
     accessToken: localStorage.getItem('jwt-auth-token')
@@ -34,8 +36,9 @@ const getters = {
     }
 }
 const actions = {
-    login(context, data) {
-        return window.axios.post('/auth/login', data)
+    login(_, data) {
+        const auth = new Authenticator()
+        return auth.login(data)
     },
     logout(context) {
         context.commit('LOGOUT_SUCCESS')

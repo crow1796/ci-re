@@ -21,6 +21,7 @@
         <empty-list-placeholder :heading="$t('no_notes')" 
         :subheading="$t('click_to_add')"
         icon="fas fa-file"
+        @add-clicked="$router.replace('/notes/create')"
         v-if="!notes.length"/>
     </div>
 </template>

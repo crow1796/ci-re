@@ -60,7 +60,8 @@
                                 {{ $t('create_from_url') }}
                             </div>
                         </div>
-                        <div class="cursor-pointer hover:bg-grey-lightest w-1/2 bg-white border border-grey-light rounded h-48 ml-2 mr-3 my-1 flex items-center justify-center flex-col">
+                        <div class="cursor-pointer hover:bg-grey-lightest w-1/2 bg-white border border-grey-light rounded h-48 ml-2 mr-3 my-1 flex items-center justify-center flex-col"
+                        @click="goTo('/notes/create')">
                             <img src="/images/icons/create-note.png" class="w-24">
                             <div class="text-center w-1/2 text-md mt-4">
                                 {{ $t('create_note') }}
