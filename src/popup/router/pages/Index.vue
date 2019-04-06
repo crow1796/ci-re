@@ -12,8 +12,11 @@
 </i18n>
 
 <template>
-    <div id="list" class="bg-grey-lightest">
-        <main-appbar/>
+    <div id="list" 
+        class="bg-grey-lightest"
+        :style="{ 'min-height': minHeight }">
+        <main-appbar @show="minHeight = '600px'"
+            @hide="minHeight = '0px'"/>
         <transition name="fade" mode="out-in">
             <router-view/>
         </transition>
@@ -49,7 +52,9 @@ export default {
         this.$router.replace('/sites')
     },
     data () {
-        return {}
+        return {
+            minHeight: '0px'
+        }
     }
 }
 </script>

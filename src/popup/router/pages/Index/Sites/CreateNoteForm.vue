@@ -25,7 +25,8 @@
                 :value="title"/>
             <ci-textarea name="notes" 
                 :label="$t('notes_label')" 
-                :placeholder="$t('notes_label')"/>
+                :placeholder="$t('notes_label')"
+                rows="10"/>
             <div class="text-right">
                 <ci-button :text="$t('cancel_btn')" 
                 class="mr-4"

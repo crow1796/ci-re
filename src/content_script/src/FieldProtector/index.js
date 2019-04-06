@@ -39,6 +39,7 @@ export default class FieldProtector {
         field.style.backgroundPosition = '98% 50%'
         field.style.cursor = 'pointer'
         field.style.paddingRight = '26px'
+        field.className += ' _x_CIBERPROTECTOR_DEST_INPUT_x_'
     }
 
     /**

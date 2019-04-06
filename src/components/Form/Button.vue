@@ -27,11 +27,6 @@ export default {
         isLoading: {
             default: false
         }
-    },
-    watch: {
-        isLoading(to){
-            console.log(to)
-        }
     }
 }
 </script>

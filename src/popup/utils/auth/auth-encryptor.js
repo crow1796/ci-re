@@ -1,6 +1,6 @@
 import forge from 'node-forge'
 
-export default class InputEncryptor {
+export default class AuthEncryptor {
     constructor(){
         this._pki = forge.pki
 
@@ -29,8 +29,19 @@ export default class InputEncryptor {
         return forge.util.encode64(encrypted)
     }
 
+    generateRSA(res, callback) {
+        let rsa = this._pki.rsa
+        rsa.generateKeyPair({
+            bits: 2048,
+            workers: 2
+        }, (err, keypair) => {
+            res.private = keypair.privateKey
+            res.public = keypair.publicKey
+            callback(res)
+        })
+    }
+
     encrypt(data){
-        console.log(data)
         return {
             nonce: this.encryptRSA_OAEP_SHA256(data.unEncryptedNonce),
             username: this.encryptRSA_OAEP_SHA256(data.username),

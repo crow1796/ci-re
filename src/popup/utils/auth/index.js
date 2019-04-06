@@ -1,31 +1,19 @@
 import forge from 'node-forge'
 import NonceGenerator from './nonce-generator'
-import InputEncryptor from './input-encryptor'
+import AuthEncryptor from './auth-encryptor'
 import Axios from 'axios';
 
 class Authenticator {
     constructor() {
-        this._inputEncryptor = new InputEncryptor()
+        this._authEncryptor = new AuthEncryptor()
         this._storagePrefix = "cib_"
         this.LOGIN_URL = '/login'
-    }
-
-    _generateRSA(res, callback) {
-        let rsa = this._inputEncryptor.getPki().rsa
-        rsa.generateKeyPair({
-            bits: 2048,
-            workers: 2
-        }, function (err, keypair) {
-            res.private = keypair.privateKey
-            res.public = keypair.publicKey
-            callback(res)
-        })
     }
 
     async login(userdata, options) {
         let promise = new Promise((resolve, reject) => {
             let key = {}
-            this._generateRSA(key, async (llave) => {
+            this._authEncryptor.generateRSA(key, async (llave) => {
                 if (
                     typeof key.public === "undefined" ||
                     typeof key.private === "undefined"
@@ -33,11 +21,11 @@ class Authenticator {
                     reject("Error creando RSA Keypair: " + JSON.stringify(key))
                 }
                 let unEncryptedNonce = NonceGenerator.getNonce()
-                userdata = this._inputEncryptor.encrypt({
+                userdata = this._authEncryptor.encrypt({
                     ...userdata,
                     unEncryptedNonce
                 })
-                let pem = this._inputEncryptor.getPki().publicKeyToPem(key.public)
+                let pem = this._authEncryptor.getPki().publicKeyToPem(key.public)
                 userdata.upublic = pem
                 localStorage.setItem(this._storagePrefix + "unonce", unEncryptedNonce)
                 let data = {
@@ -70,7 +58,7 @@ class Authenticator {
                 //                         this._storagePrefix + "secret",
                 //                         response.result.secret
                 //                     )
-                //                     let privatePEM = this._inputEncryptor.getPki().privateKeyToPem(key.private)
+                //                     let privatePEM = this._authEncryptor.getPki().privateKeyToPem(key.private)
                 //                     localStorage.setItem(this._storagePrefix + "prk", privatePEM)
                 //                     resolve(response)
                 //                 } else {
@@ -94,6 +82,11 @@ class Authenticator {
             })
         })
         return promise
+    }
+
+    logout(){
+        localStorage.removeItem(this._storagePrefix + "token")
+        localStorage.removeItem(this._storagePrefix + "secret")
     }
 
     _getDomainURL(){

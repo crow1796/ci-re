@@ -64,10 +64,15 @@ export default {
     },
     methods: {
         async login(){
+            if(this.isLoading) return false
             this.isLoading = true
             let result = await this.$validator.validateAll()
+            if(result){
+                const response = await this.$store.dispatch('auth/login', this.userdata)
+                this.isLoading = false
+                return
+            }
             this.isLoading = false
-            if(result) return this.$store.dispatch('auth/login', this.userdata)
         }
     }
 }

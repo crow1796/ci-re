@@ -9,6 +9,7 @@
         :placeholder="placeholder"
         :autocomplete="autocomplete"
         v-model="model"
+        :rows="rows"
         v-validate="validationRules"></textarea>
     </div>
 </template>
@@ -17,6 +18,11 @@
 import FieldMixin from './Mixins/FieldMixin.vue'
 
 export default {
+    props: {
+        rows: {
+            default: 5
+        }
+    },
     mixins: [FieldMixin]
 }
 </script>

@@ -32,7 +32,8 @@
     "chrome_style": true
   },
   "web_accessible_resources": [
-    "images/*png"
+    "images/*png",
+    "*"
   ],
   "permissions": [
     "tabs"

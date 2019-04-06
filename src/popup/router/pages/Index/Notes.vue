@@ -28,7 +28,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import EmptyListPlaceholder from './EmptyListPlaceholder.vue'
+import EmptyListPlaceholder from '@app/popup/components/EmptyListPlaceholder.vue'
 
 export default {
     components: {

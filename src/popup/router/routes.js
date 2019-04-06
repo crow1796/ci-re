@@ -2,10 +2,14 @@ import PageIndex from './pages/Index'
 import PageSites from './pages/Index/Sites'
 import PageCreateSiteForm from './pages/Index/Sites/CreateSiteForm.vue'
 import PageCreateNoteForm from './pages/Index/Sites/CreateNoteForm.vue'
+import PageGeneratePassword from './pages/Index/GeneratePassword.vue'
 
 import PageNotes from './pages/Index/Notes'
 
 import PageAuth from './pages/Auth'
+
+import EmbedsIndex from './embeds/Index.vue'
+import EmbedsSites from './embeds/Index/Sites.vue'
 
 export default [{
         path: '/',
@@ -41,6 +45,32 @@ export default [{
                 path: 'notes/create',
                 component: PageCreateNoteForm,
                 name: 'create_note',
+                meta: {
+                    requireAuth: true
+                }
+            },
+            {
+                path: 'generate-password',
+                component: PageGeneratePassword,
+                name: 'create_note',
+                meta: {
+                    requireAuth: false
+                }
+            }
+        ]
+    },
+    {
+        path: '/embeds',
+        component: EmbedsIndex,
+        name: 'embeds',
+        meta: {
+            requireAuth: false
+        },
+        children: [
+            {
+                path: 'sites',
+                component: EmbedsSites,
+                name: 'embed_sites',
                 meta: {
                     requireAuth: true
                 }

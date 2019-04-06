@@ -25,8 +25,15 @@
                 @click="show">
                     <i class="fas fa-th"></i>
                 </span>
-                <img src="/images/ciberprotector-logo-blanco.png" alt="CiberProtector" class="w-48 align-middle">
+                <span class="pt-4">
+                    <img src="/images/ciberprotector-logo-blanco.png" alt="CiberProtector" class="w-48 align-middle">
+                </span>
             </div>
+            <span class="text-white text-xl align-middle cursor-pointer p-4 inline-block"
+            @click="$router.replace('/sites')"
+            v-if="$route.name != 'sites' && $route.name != 'notes'">
+                <i class="fas fa-home"></i>
+            </span>
         </div>
         <transition name="slide"
             enter-active-class="slideInDown"
@@ -69,7 +76,8 @@
                         </div>
                     </div>
                     <div class="flex">
-                        <div class="cursor-pointer hover:bg-grey-lightest w-1/2 bg-white border border-grey-light rounded h-48 ml-3 mr-2 my-1 flex items-center justify-center flex-col">
+                        <div class="cursor-pointer hover:bg-grey-lightest w-1/2 bg-white border border-grey-light rounded h-48 ml-3 mr-2 my-1 flex items-center justify-center flex-col"
+                        @click="goTo('/generate-password')">
                             <img src="/images/icons/generate-password.png" class="w-24">
                             <div class="text-center w-1/2 text-md mt-4">
                                 {{ $t('generate_password') }}
@@ -98,9 +106,11 @@ export default {
     methods: {
         show(){
             this.isActive = true
+            this.$emit('show')
         },
         hide(){
             this.isActive = false
+            this.$emit('hide')
         },
         goTo(location){
             this.$router.replace(location)

@@ -1,42 +1,17 @@
 <script>
+import ModelMixin from './ModelMixin.vue'
+import TextMixin from './TextMixin.vue'
+import NamedMixin from './NamedMixin.vue'
+import ValidationMixin from './ValidationMixin.vue'
+
 export default {
+    mixins: [ModelMixin, TextMixin, NamedMixin, ValidationMixin],
     props: {
-        name: {
-            required: true
-        },
-        label: {
-            default: ''
-        },
-        placeholder: {
-            default: ''
-        },
-        value: {
-            required: false
-        },
         size: {
             default: 'md'
         },
         autocomplete: {
             default: 'off'
-        },
-        validationRules: {
-            required: false
-        }
-    },
-    inject: {
-        $validator: '$validator'
-    },
-    data(){
-        return {
-            model: this.value
-        }
-    },
-    watch: {
-        value(to){
-            this.model = to
-        },
-        model(to){
-            this.$emit('input', to)
         }
     }
 }
