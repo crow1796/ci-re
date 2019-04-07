@@ -1,5 +1,34 @@
 const state = {
-    sites: []
+    sites: [
+        {
+            username: 'asds',
+            password: 'asdsd'
+        },
+        {
+            username: 'asds',
+            password: 'asdsd'
+        },
+        {
+            username: 'asds',
+            password: 'asdsd'
+        },
+        {
+            username: 'asds',
+            password: 'asdsd'
+        }, {
+            username: 'asds',
+            password: 'asdsd'
+        }, {
+            username: 'asds',
+            password: 'asdsd'
+        }, {
+            username: 'asds',
+            password: 'asdsd'
+        }, {
+            username: 'asds',
+            password: 'asdsd'
+        }
+    ]
 }
 
 const mutations = {}

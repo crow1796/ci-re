@@ -13,107 +13,31 @@
 
 <template>
     <div>
-        <div class="p-3 overflow-auto card-list">
-            <div class="rounded shadow bg-white text-grey-dark mb-2">
-                <div class="flex">
-                    <div class="p-6">
-                        LOGO
-                    </div>
-                    <div class="flex-grow py-4">
-                        <div class="font-bold">
-                            Name
-                        </div>
-                        <div class="link">
-                            Link
-                        </div>
-                    </div>
-                    <div class="flex">
-                        <div class="p-6 cursor-pointer">
-                            <i class="fas fa-ellipsis-v"></i>
-                        </div>
-                    </div>
-                    <div class="flex">
-                        <ci-button text="USE"/>
-                    </div>
-                </div>
-            </div>
-            <div class="rounded shadow bg-white text-grey-dark mb-2">
-                <div class="flex">
-                    <div class="p-6">
-                        LOGO
-                    </div>
-                    <div class="flex-grow py-4">
-                        <div class="font-bold">
-                            Name
-                        </div>
-                        <div class="link">
-                            Link
-                        </div>
-                    </div>
-                    <div class="flex">
-                        <div class="p-6 cursor-pointer">
-                            <i class="fas fa-ellipsis-v"></i>
-                        </div>
-                    </div>
-                    <div class="flex">
-                        <ci-button text="USE"/>
-                    </div>
-                </div>
-            </div>
-            <div class="rounded shadow bg-white text-grey-dark mb-2">
-                <div class="flex">
-                    <div class="p-6">
-                        LOGO
-                    </div>
-                    <div class="flex-grow py-4">
-                        <div class="font-bold">
-                            Name
-                        </div>
-                        <div class="link">
-                            Link
-                        </div>
-                    </div>
-                    <div class="flex">
-                        <div class="p-6 cursor-pointer">
-                            <i class="fas fa-ellipsis-v"></i>
-                        </div>
-                    </div>
-                    <div class="flex">
-                        <ci-button text="USE"/>
-                    </div>
-                </div>
-            </div>
-            <div class="rounded shadow bg-white text-grey-dark mb-2">
-                <div class="flex">
-                    <div class="p-6">
-                        LOGO
-                    </div>
-                    <div class="flex-grow py-4">
-                        <div class="font-bold">
-                            Name
-                        </div>
-                        <div class="link">
-                            Link
-                        </div>
-                    </div>
-                    <div class="flex">
-                        <div class="p-6 cursor-pointer">
-                            <i class="fas fa-ellipsis-v"></i>
-                        </div>
-                    </div>
-                    <div class="flex">
-                        <ci-button text="USE"/>
-                    </div>
-                </div>
-            </div>
+        <div class="p-3 card-list">
+            <empty-list-placeholder :heading="$t('no_sites')" 
+            :subheading="$t('click_to_add')"
+            icon="fas fa-globe-europe"
+            v-if="!sites.length"
+            @add-clicked="$router.replace('/embeds/sites/create?mode=current_site')"/>
+
+            <account-list-item v-for="(site, index) in sites" 
+                :key="index"
+                :account="site" 
+                usable/>
         </div>
     </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
+import EmptyListPlaceholder from '@app/popup/components/EmptyListPlaceholder.vue'
+import AccountListItem from '@app/popup/components/App/AccountListItem.vue'
 
 export default {
+    components: {
+        AccountListItem,
+        EmptyListPlaceholder
+    },
     computed: {
         ...mapGetters({
             sites: 'sites/sites'

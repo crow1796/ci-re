@@ -32,14 +32,16 @@ export default class FieldProtector {
      * @param {*} field 
      */
     _setAsProtectedField(field) {
-        field.style.backgroundImage = `url(${chrome.runtime.getURL('images/fieldlogo.png')})`
-        field.style.backgroundRepeat = 'no-repeat'
-        field.style.backgroundAttachment = 'scroll'
-        field.style.backgroundSize = '19px 19px'
-        field.style.backgroundPosition = '98% 50%'
-        field.style.cursor = 'pointer'
-        field.style.paddingRight = '26px'
-        field.className += ' _x_CIBERPROTECTOR_DEST_INPUT_x_'
+        $(field).addClass('_x_CIBERPROTECTOR_DEST_INPUT_x_')
+        $(field).css({
+            backgroundImage: `url(${chrome.runtime.getURL('images/fieldlogo.png')})`,
+            backgroundRepeat: 'no-repeat',
+            backgroundAttachment: 'scroll',
+            backgroundSize: '19px 19px',
+            backgroundPosition: '98% 50%',
+            cursor: 'pointer',
+            paddingRight: '26px'
+        })
     }
 
     /**

@@ -1,7 +1,5 @@
-import forge from 'node-forge'
 import NonceGenerator from './nonce-generator'
 import AuthEncryptor from './auth-encryptor'
-import Axios from 'axios';
 
 class Authenticator {
     constructor() {
@@ -36,6 +34,7 @@ class Authenticator {
                     otpnumber: userdata.otpnumber,
                     platform: userdata.platform
                 }
+                console.log(data)
                 let response = await axios.post("https://api.ciberprotector" + this._getDomainURL() + this.LOGIN_URL, data)
                 console.log(response.data)
                 // this._sendRequest("POST", this.LOGIN_URL, data, null)

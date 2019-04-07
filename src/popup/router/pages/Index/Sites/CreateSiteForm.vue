@@ -55,7 +55,7 @@
             <div class="text-right">
                 <ci-button :text="$t('cancel_btn')" 
                 class="mr-4"
-                @click="$router.replace('/sites')"/>
+                @click="$route.meta.embedded ? $router.replace('/embeds/sites') : $router.replace('/sites')"/>
                 <ci-button appearance="primary" 
                 :text="$t('save_btn')"/>
             </div>

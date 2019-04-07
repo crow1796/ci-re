@@ -24,13 +24,14 @@
         <div class="home-search border-b border-grey-lighter">
             <input type="text" class="p-4 w-full outline-none" :placeholder="$t('search')">
         </div>
-        <!-- <empty-list-placeholder :heading="$t('no_sites')" 
+        <empty-list-placeholder :heading="$t('no_sites')" 
             :subheading="$t('click_to_add')"
             icon="fas fa-globe-europe"
             v-if="!sites.length"
-            @add-clicked="$router.replace('/sites/create')"/> -->
+            @add-clicked="$router.replace('/sites/create')"/>
         <div class="text-center py-3 shadow cursor-pointer hover:bg-grey-lighter" 
-            @click="$router.replace('/sites/create')">
+            @click="$router.replace('/sites/create')"
+            v-if="sites.length">
             <button class="rounded-full text-center bg-white text-lg w-6 h-6 outline-none focus:outline-none hover:bg-grey-lighter text-primary shadow">
                 +
             </button>
@@ -38,207 +39,31 @@
                 {{ $t('add_site') }}
             </span>
         </div>
-        <div class="p-3 overflow-auto card-list">
+        <div class="p-3 overflow-auto card-list" v-if="sites.length">
             <div class="font-bold mb-2 text-grey-dark">
                 {{ $t('suggested_accounts') }}
             </div>
-            <div class="rounded shadow bg-white text-grey-dark mb-2">
-                <div class="flex">
-                    <div class="p-6">
-                        LOGO
-                    </div>
-                    <div class="flex-grow py-4">
-                        <div class="font-bold">
-                            Name
-                        </div>
-                        <div class="link">
-                            Link
-                        </div>
-                    </div>
-                    <div class="flex">
-                        <div class="p-6 cursor-pointer">
-                            <i class="fas fa-ellipsis-v"></i>
-                        </div>
-                    </div>
-                    <div class="flex">
-                        <ci-button text="USE"/>
-                    </div>
-                </div>
-            </div>
+            <account-list-item :account="{}" usable/>
             <div class="border border-b border-grey-lighter mb-2 mt-4"></div>
             <div class="font-bold mb-2 text-grey-dark">
                 {{ $t('all_accounts') }}
             </div>
-            <div class="rounded shadow bg-white text-grey-dark mb-2">
-                <div class="flex">
-                    <div class="p-6">
-                        LOGO
-                    </div>
-                    <div class="flex-grow py-4">
-                        <div class="font-bold">
-                            Name
-                        </div>
-                        <div class="link">
-                            Link
-                        </div>
-                    </div>
-                    <div class="flex">
-                        <div class="p-6 cursor-pointer">
-                            <i class="fas fa-ellipsis-v"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="rounded shadow bg-white text-grey-dark mb-2">
-                <div class="flex">
-                    <div class="p-6">
-                        LOGO
-                    </div>
-                    <div class="flex-grow py-4">
-                        <div class="font-bold">
-                            Name
-                        </div>
-                        <div class="link">
-                            Link
-                        </div>
-                    </div>
-                    <div class="flex">
-                        <div class="p-6 cursor-pointer">
-                            <i class="fas fa-ellipsis-v"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="rounded shadow bg-white text-grey-dark mb-2">
-                <div class="flex">
-                    <div class="p-6">
-                        LOGO
-                    </div>
-                    <div class="flex-grow py-4">
-                        <div class="font-bold">
-                            Name
-                        </div>
-                        <div class="link">
-                            Link
-                        </div>
-                    </div>
-                    <div class="flex">
-                        <div class="p-6 cursor-pointer">
-                            <i class="fas fa-ellipsis-v"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="rounded shadow bg-white text-grey-dark mb-2">
-                <div class="flex">
-                    <div class="p-6">
-                        LOGO
-                    </div>
-                    <div class="flex-grow py-4">
-                        <div class="font-bold">
-                            Name
-                        </div>
-                        <div class="link">
-                            Link
-                        </div>
-                    </div>
-                    <div class="flex">
-                        <div class="p-6 cursor-pointer">
-                            <i class="fas fa-ellipsis-v"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="rounded shadow bg-white text-grey-dark mb-2">
-                <div class="flex">
-                    <div class="p-6">
-                        LOGO
-                    </div>
-                    <div class="flex-grow py-4">
-                        <div class="font-bold">
-                            Name
-                        </div>
-                        <div class="link">
-                            Link
-                        </div>
-                    </div>
-                    <div class="flex">
-                        <div class="p-6 cursor-pointer">
-                            <i class="fas fa-ellipsis-v"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="rounded shadow bg-white text-grey-dark mb-2">
-                <div class="flex">
-                    <div class="p-6">
-                        LOGO
-                    </div>
-                    <div class="flex-grow py-4">
-                        <div class="font-bold">
-                            Name
-                        </div>
-                        <div class="link">
-                            Link
-                        </div>
-                    </div>
-                    <div class="flex">
-                        <div class="p-6 cursor-pointer">
-                            <i class="fas fa-ellipsis-v"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="rounded shadow bg-white text-grey-dark mb-2">
-                <div class="flex">
-                    <div class="p-6">
-                        LOGO
-                    </div>
-                    <div class="flex-grow py-4">
-                        <div class="font-bold">
-                            Name
-                        </div>
-                        <div class="link">
-                            Link
-                        </div>
-                    </div>
-                    <div class="flex">
-                        <div class="p-6 cursor-pointer">
-                            <i class="fas fa-ellipsis-v"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="rounded shadow bg-white text-grey-dark mb-2">
-                <div class="flex">
-                    <div class="p-6">
-                        LOGO
-                    </div>
-                    <div class="flex-grow py-4">
-                        <div class="font-bold">
-                            Name
-                        </div>
-                        <div class="link">
-                            Link
-                        </div>
-                    </div>
-                    <div class="flex">
-                        <div class="p-6 cursor-pointer">
-                            <i class="fas fa-ellipsis-v"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <account-list-item v-for="(site, index) in sites" 
+                :key="index"
+                :account="site" 
+                usable/>
         </div>
     </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
+import AccountListItem from '@app/popup/components/App/AccountListItem.vue'
 import EmptyListPlaceholder from '@app/popup/components/EmptyListPlaceholder.vue'
 
 export default {
     components: {
+        AccountListItem,
         EmptyListPlaceholder
     },
     computed: {

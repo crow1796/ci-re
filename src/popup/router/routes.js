@@ -10,6 +10,7 @@ import PageAuth from './pages/Auth'
 
 import EmbedsIndex from './embeds/Index.vue'
 import EmbedsSites from './embeds/Index/Sites.vue'
+import EmbedsCreateSiteForm from './pages/Index/Sites/CreateSiteForm.vue'
 
 export default [{
         path: '/',
@@ -72,7 +73,17 @@ export default [{
                 component: EmbedsSites,
                 name: 'embed_sites',
                 meta: {
-                    requireAuth: true
+                    requireAuth: true,
+                    embedded: true
+                }
+            },
+            {
+                path: 'sites/create',
+                component: EmbedsCreateSiteForm,
+                name: 'embed_create_sites',
+                meta: {
+                    requireAuth: true,
+                    embedded: true
                 }
             }
         ]
