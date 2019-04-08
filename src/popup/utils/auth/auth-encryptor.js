@@ -43,9 +43,10 @@ export default class AuthEncryptor {
 
     encrypt(data){
         return {
+            ...data,
             nonce: this.encryptRSA_OAEP_SHA256(data.unEncryptedNonce),
             username: this.encryptRSA_OAEP_SHA256(data.username),
-            password: this.encryptRSA_OAEP_SHA256(data.password),
+            password: this.encryptRSA_OAEP_SHA256(data.password)
         }
     }
 }

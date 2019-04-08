@@ -17,3 +17,7 @@ axios.interceptors.request.use(function (config) {
     // Do something with request error
     return Promise.reject(error);
 });
+let domain = localStorage.getItem("apidomain") === ".io" ? ".io" : ".com"
+window.axios.defaults.baseURL = `https://api.ciberprotector${domain}`
+
+window.storagePrefix = 'cib_'

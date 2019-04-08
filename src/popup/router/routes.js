@@ -1,3 +1,4 @@
+import Middlewares from './middlewares'
 import PageIndex from './pages/Index'
 import PageSites from './pages/Index/Sites'
 import PageCreateSiteForm from './pages/Index/Sites/CreateSiteForm.vue'
@@ -16,6 +17,7 @@ export default [{
         path: '/',
         component: PageIndex,
         name: 'home',
+        beforeEnter: Middlewares.checkIfUserIsNotLoggedIn,
         meta: {
             requireAuth: true
         },
@@ -92,6 +94,7 @@ export default [{
         path: '/auth',
         component: PageAuth,
         name: 'auth',
+        beforeEnter: Middlewares.checkIfUserIsLoggedIn,
         meta: {
             requireAuth: false
         }
