@@ -1,15 +1,15 @@
 <template>
     <div class="rounded shadow bg-white text-grey-dark mb-2">
         <div class="flex">
-            <div class="p-6">
-                LOGO
+            <div class="px-3 py-3">
+                <img v-lazy="iconURL" class="besticon"/>
             </div>
             <div class="flex-grow py-4">
                 <div class="font-bold">
-                    Name
+                    {{ account.Name }}
                 </div>
                 <div class="link">
-                    Link
+                    {{ account.Url }}
                 </div>
             </div>
             <div class="flex">
@@ -49,6 +49,28 @@ export default {
                 })
             })
         }
+    },
+    computed: {
+        iconURL(){
+            let besticonURL = localStorage.getItem("apidomain") === ".io"
+          ? "https://besticon.ciberprotector.io/icon?size=64..96..128&url="
+          : "https://besticon.ciberprotector.com/icon?size=64..96..128&url="
+            
+            let hostname = null
+            let match = this.account.Url.match(/:\/\/(www[0-9]?\.)?(.[^/:]+)/i);
+            if (match != null && match.length > 2 && typeof match[2] === "string" && match[2].length > 0 ) {
+                hostname = match[2]
+            }
+
+            return besticonURL + hostname
+        }
     }
 }
 </script>
+
+<style lang="scss" scoped>
+    .besticon{
+        width: 40px;
+    }
+</style>
+

@@ -76,10 +76,6 @@ class Authenticator {
         let response = await axios.post(`/users/hasotp?username=${data.username}`)
         return response
     }
-
-    logout(){
-        store.dispatch('auth/logout')
-    }
 }
 
 export default Authenticator

@@ -1,10 +1,17 @@
 const state = {
+    isFullLoading: false
 }
 
 const mutations = {
+    IS_FULL_LOADING(state, loading){
+        state.isFullLoading = loading
+    }
 }
 
 const getters = {
+    isFullLoading(state){
+        return state.isFullLoading
+    }
 }
 
 const actions = {

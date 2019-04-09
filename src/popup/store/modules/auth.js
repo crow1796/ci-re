@@ -1,11 +1,13 @@
 import Authenticator from '@app/popup/utils/auth'
 
 const state = {
-    token: localStorage.getItem(`${window.storagePrefix}token`),
-    secret: localStorage.getItem(`${window.storagePrefix}secret`)
+    token: localStorage.getItem(`cib_token`),
+    secret: localStorage.getItem(`cib_secret`)
 }
 const mutations = {
     LOGIN_SUCCESS(state, {token, secret}) {
+        state.token = token
+        state.secret = secret
         localStorage.setItem(`${window.storagePrefix}token`, token)
         localStorage.setItem(`${window.storagePrefix}secret`, secret)
     },
@@ -18,7 +20,7 @@ const mutations = {
 }
 const getters = {
     isLoggedIn(state) {
-        return localStorage.getItem(`${window.storagePrefix}token`) && localStorage.getItem(`${window.storagePrefix}secret`)
+        return state.token && state.secret
     },
     token(state) {
         return state.token
@@ -37,7 +39,7 @@ const actions = {
         return auth.preLogin(userdata)
     },
     logout(context) {
-        context.commit('LOGOUT_SUCCESS')
+        return context.commit('LOGOUT_SUCCESS')
     },
     checkUser() {
         return window.axios.post('/auth/me')

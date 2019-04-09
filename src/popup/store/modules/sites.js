@@ -1,43 +1,23 @@
+import Vue from 'vue'
+
 const state = {
-    sites: [
-        {
-            username: 'asds',
-            password: 'asdsd'
-        },
-        {
-            username: 'asds',
-            password: 'asdsd'
-        },
-        {
-            username: 'asds',
-            password: 'asdsd'
-        },
-        {
-            username: 'asds',
-            password: 'asdsd'
-        }, {
-            username: 'asds',
-            password: 'asdsd'
-        }, {
-            username: 'asds',
-            password: 'asdsd'
-        }, {
-            username: 'asds',
-            password: 'asdsd'
-        }, {
-            username: 'asds',
-            password: 'asdsd'
-        }
-    ]
+    sites: []
 }
 
-const mutations = {}
+const mutations = {
+    SITES(state, sites){
+        state.sites = sites
+    }
+}
 
 const getters = {
     sites: (context) => context.sites
 }
 
 const actions = {
+    getVault(){
+        return axios.get('/item/all')
+    }
 }
 
 export default {

@@ -40,18 +40,17 @@
             </span>
         </div>
         <div class="p-3 overflow-auto card-list" v-if="sites.length">
-            <div class="font-bold mb-2 text-grey-dark">
+            <!-- <div class="font-bold mb-2 text-grey-dark">
                 {{ $t('suggested_accounts') }}
             </div>
-            <account-list-item :account="{}" usable/>
+            <account-list-item :account="{}" usable/> -->
             <div class="border border-b border-grey-lighter mb-2 mt-4"></div>
             <div class="font-bold mb-2 text-grey-dark">
                 {{ $t('all_accounts') }}
             </div>
             <account-list-item v-for="(site, index) in sites" 
                 :key="index"
-                :account="site" 
-                usable/>
+                :account="site"/>
         </div>
     </div>
 </template>
@@ -66,10 +65,40 @@ export default {
         AccountListItem,
         EmptyListPlaceholder
     },
+    created(){
+        this.$store.commit('app/IS_FULL_LOADING', true)
+    },
+    async mounted(){
+        if(this.isOnline && this.cacheNotExpired){
+            let { data } = await this.$store.dispatch('sites/getVault')
+            this.setLifetime()
+            this.$offlineStorage.set('sites', data.result)
+        }
+        this.$store.commit('app/IS_FULL_LOADING', false)
+        this.$store.commit('sites/SITES', this.$offlineStorage.get('sites') || [])
+    },
+    methods: {
+        setLifetime(){
+            let curTS = window.performance && window.performance.now && window.performance.timing && window.performance.timing.navigationStart ? window.performance.now() + window.performance.timing.navigationStart : Date.now()
+
+            this.$offlineStorage.set('cache_lifetime', { timestamp: curTS, lifetime: 1800 })
+        }
+    },
     computed: {
         ...mapGetters({
             sites: 'sites/sites'
-        })
+        }),
+        cacheNotExpired(){
+            let curTS = window.performance && window.performance.now && window.performance.timing && window.performance.timing.navigationStart ?  window.performance.now() + window.performance.timing.navigationStart :  Date.now()
+
+            let lifetime = this.$offlineStorage.get('cache_lifetime')
+
+            if(!lifetime) return true
+            
+            let time = (curTS / lifetime.timestamp) / 1000
+
+            return lifetime.lifetime < time
+        }
     }
 }
 </script>

@@ -48,8 +48,9 @@
                             <i class="fas fa-arrow-left"></i>
                         </span>
                         <span class="text-xl text-grey-darker align-middle cursor-pointer p-4 inline-block"
-                            @click="$router.replace('/auth')"
-                            title="Logout">
+                            @click="logout"
+                            title="Logout"
+                            v-if="isOnline">
                             <i class="fas fa-sign-out-alt"></i>
                         </span>
                     </div>
@@ -93,6 +94,7 @@
                 </div>
             </div>
         </transition>
+        <!-- <vue-tailwind-modal/> -->
     </div>
 </template>
 
@@ -115,6 +117,11 @@ export default {
         goTo(location){
             this.$router.replace(location)
             this.hide()
+        },
+        async logout(){
+            await this.$store.dispatch('auth/logout')
+            this.hide()
+            this.$router.replace('/auth')
         }
     }
 }
